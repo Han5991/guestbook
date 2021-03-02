@@ -27,14 +27,14 @@ public class PageResultDTO<DTO, EN> {
     //페이지 번호 목록
     private List<Integer> pageList;
 
-    public PageResultDTO(Page<EN> result , Function<EN, DTO> fn) {
+    public PageResultDTO(Page<EN> result, Function<EN, DTO> fn) {
         dtoList = result.stream().map(fn).collect(Collectors.toList());
         totalPage = result.getTotalPages();
         makePageList(result.getPageable());
     }
 
     private void makePageList(Pageable pageable) {
-        this.page = pageable.getPageNumber()+1;//0부터 시작하므로 1을 추가
+        this.page = pageable.getPageNumber() + 1;//0부터 시작하므로 1을 추가
         this.size = pageable.getPageSize();
         //temp end page
         int tempEnd = (int) (Math.ceil(page / 10.0)) * 10;
@@ -42,7 +42,7 @@ public class PageResultDTO<DTO, EN> {
         prev = start > 1;
         end = totalPage > tempEnd ? tempEnd : totalPage;
         next = totalPage > tempEnd;
-        pageList = IntStream.rangeClosed(start,end).boxed().collect(Collectors.toList());
+        pageList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
     }
 
 }

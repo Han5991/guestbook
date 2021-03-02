@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 @Builder
 @AllArgsConstructor
 @Data
-public class PageRequestDTO<DTO, EN> {
+public class PageRequestDTO {
 
     private int page;
     //목록 사이즈
@@ -23,6 +23,6 @@ public class PageRequestDTO<DTO, EN> {
     }
 
     public Pageable getPageable(Sort sort) {
-        return PageRequest.of(0, size, sort);
+        return PageRequest.of(page -1, size, sort);
     }
 }

@@ -21,7 +21,7 @@ public class GuestbookServiceTests {
 
     @Test
     public void testList() {
-        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(1).size(10).build();
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(5).size(10).build();
         PageResultDTO<GuestbookDTO, Guestbook> resultDTO = service.getList(pageRequestDTO);
         System.out.println("PREV : " + resultDTO.isPrev());
         System.out.println("NEXT : " + resultDTO.isNext());
