@@ -49,9 +49,11 @@ public class GuestbookRepositoryTests {
         BooleanExpression expression = qGuestbook.title.contains("4");//3
         builder.and(expression);//4
         Page<Guestbook> result = guestbookRepository.findAll(builder, pageable);
-        result.stream().forEach(guestbook -> {
+        for(Guestbook guestbook: result)
             System.out.println(guestbook);
-        });
+//        result.stream().forEach(guestbook -> {
+//            System.out.println(guestbook);
+//        });
     }
 
     @Test
