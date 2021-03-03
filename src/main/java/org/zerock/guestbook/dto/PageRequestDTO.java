@@ -16,6 +16,8 @@ public class PageRequestDTO {
     private int page;
     //목록 사이즈
     private int size;
+    private String type;
+    private String keyword;
 
     public PageRequestDTO() {
         this.page = 1;
@@ -23,6 +25,6 @@ public class PageRequestDTO {
     }
 
     public Pageable getPageable(Sort sort) {
-        return PageRequest.of(page -1, size, sort);
+        return PageRequest.of(page - 1, size, sort);
     }
 }
